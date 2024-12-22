@@ -29,3 +29,9 @@
 
 ## Структура репозитория
 
+https://github.com/MrShaman1337/libmysyslog-client
+https://github.com/MrShaman1337/libmysyslog
+https://github.com/MrShaman1337/libmysyslog-daemon
+https://github.com/MrShaman1337/libmysyslog-json
+https://github.com/MrShaman1337/libmysyslog-text
+
