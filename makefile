@@ -1,5 +1,7 @@
-SUBDIRS = libmysyslog libmysyslog-json libmysyslog-text mysyslog-client mysyslog-daemon
 
+SUBDIRS = libmysyslog libmysyslog-json libmysyslog-text libmysyslog-client libmysyslog-daemon
+
+# Цель по умолчанию
 all: $(SUBDIRS)
 
 $(SUBDIRS):

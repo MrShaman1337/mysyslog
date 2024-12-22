@@ -1,23 +1,18 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -I../libmysyslog
-LDFLAGS = -L../libmysyslog -lmysyslog
-TARGET = libmysyslog-client
+CFLAGS = -Wall -g -I../libmysyslog -I../libmysyslog-text -I../libmysyslog-json
+LDFLAGS = -L../libmysyslog -L../libmysyslog-text -L../libmysyslog-json -lmysyslog -lmysyslog-text -lmysyslog-json
 
-all: $(TARGET)
+all: libmysyslog-client
 
-$(TARGET): libmysyslog-client.o
-        $(CC) -o $(TARGET) libmysyslog-client.o $(LDFLAGS)
+libmysyslog-client: libmysyslog-client.o
+	$(CC) -o $@ $^ $(LDFLAGS)
 
-libmysyslog.o: libmysyslog-client.c
-        $(cc) $(CFLAGS) -c libmysyslog-client.c
+libmysyslog-client.o: libmysyslog-client.c
+	$(CC) $(CFLAGS) -c $<
+
+run: libmysyslog-client
+	./libmysyslog-client
 
 clean:
-        rm -f $(TARGET) *.o
-
-.PHONY: all clean
-
-
-
-
-
-
+	rm -f libmysyslog-client *.o
+a

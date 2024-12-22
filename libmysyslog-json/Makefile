@@ -1,20 +1,14 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -fPIC
-TARGET = libmysyslog-json.so
+CFLAGS = -Wall -g -fPIC -I../libmysyslog
+LDFLAGS = -shared
 
-all: $(TARGET)
+all: libmysyslog-json.so
 
-$(TARGET): libmysyslog-json.o
-        $(CC) -shared -o $(TARGET) libmysyslog-json.o
+libmysyslog-json.so: libmysyslog-json.o
+	$(CC) $(LDFLAGS) -o $@ $^
 
 libmysyslog-json.o: libmysyslog-json.c
-        $(cc) $(CFLAGS) -c libmysyslog-json.c
+	$(CC) $(CFLAGS) -c $<
 
 clean:
-        rm -f $(TARGET) *.o
-
-.PHONY: all clean
-
-
-
-
+	rm -f *.so *.o
